@@ -6,3 +6,12 @@ C:\Users\shman\source\repos\apimimporter\apimimporter\obj\Release\apimimporter.c
 C:\Users\shman\source\repos\apimimporter\apimimporter\obj\Release\apimimporter.csproj.CoreCompileInputs.cache
 C:\Users\shman\source\repos\apimimporter\apimimporter\obj\Release\apimimporter.exe
 C:\Users\shman\source\repos\apimimporter\apimimporter\obj\Release\apimimporter.pdb
+D:\Github\Azure-API-mananagement-Importer\apimimporter\bin\Release\apimimporter.exe.config
+D:\Github\Azure-API-mananagement-Importer\apimimporter\bin\Release\apimimporter.exe
+D:\Github\Azure-API-mananagement-Importer\apimimporter\bin\Release\apimimporter.pdb
+D:\Github\Azure-API-mananagement-Importer\apimimporter\obj\Release\apimimporter.csprojResolveAssemblyReference.cache
+D:\Github\Azure-API-mananagement-Importer\apimimporter\obj\Release\apimimporter.Form1.resources
+D:\Github\Azure-API-mananagement-Importer\apimimporter\obj\Release\apimimporter.csproj.GenerateResource.Cache
+D:\Github\Azure-API-mananagement-Importer\apimimporter\obj\Release\apimimporter.csproj.CoreCompileInputs.cache
+D:\Github\Azure-API-mananagement-Importer\apimimporter\obj\Release\apimimporter.exe
+D:\Github\Azure-API-mananagement-Importer\apimimporter\obj\Release\apimimporter.pdb
