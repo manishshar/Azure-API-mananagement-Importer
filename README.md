@@ -5,7 +5,7 @@ In azure portal, when you try to upload new changes to existing apis with large 
 
 ### First Look - APIM Importer
 
-Below is a screenshot of apim importer. As an authentication, It requires api management service name and primary key of management api (Just need to enable Management API from [here](https://docs.microsoft.com/en-us/rest/api/apimanagement/apimanagementrest/api-management-rest#EnableRESTAPI)) and click GO.  
+We introduced apim importer for helping our operation imports in azure apim service. As to start with APIMImporter first step, It requires api management service name and primary key of management api (Just need to enable Management API from [here](https://docs.microsoft.com/en-us/rest/api/apimanagement/apimanagementrest/api-management-rest#EnableRESTAPI)) and click GO.  
 
 ![Screenshot](https://github.com/manishkiet86/Azure-API-mananagement-Importer/blob/master/images/Apimimporter.png)
 
