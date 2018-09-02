@@ -46,7 +46,7 @@ but here we got below error.
 
 This behavior is due to by design. So as a workaround we can trigger Http operation for apim service directly over <b>xyz.management.azure-api.net</b> (time consuming) or upgrade our Api management service sku (costly). Also, In this scenario powershell and direct calls to management.core.net will not work.    
 
-However, APIMImporter utility will help in this to get rid of this import timeout issues or you can use it independently too. 
+However, <b>APIMImporter</b> utility will help in this to get rid of this import timeout issues or you can use it independently too. 
 
 Happy Coding!
 ### Thank You!
