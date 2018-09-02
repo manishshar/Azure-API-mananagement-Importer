@@ -74,7 +74,6 @@
             this.txtapimname.Name = "txtapimname";
             this.txtapimname.Size = new System.Drawing.Size(118, 20);
             this.txtapimname.TabIndex = 1;
-            this.txtapimname.Text = "apimwithdns";
             this.txtapimname.TextChanged += new System.EventHandler(this.txtapimname_TextChanged);
             // 
             // txtaccesstoken
