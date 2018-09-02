@@ -18,7 +18,7 @@ targeting .net framework 4.6.1
 
 ### Supported Specification Files
 ```
-This currently supports <b>WSDL, WADL and OpenApi swagger </b> specification files. 
+This currently supports WSDL, WADL and OpenApi swagger specification files. 
 ```
 
 ![Screenshot](https://github.com/manishkiet86/Azure-API-mananagement-Importer/blob/master/images/specificationtypes.png)
