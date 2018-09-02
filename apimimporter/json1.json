@@ -1,0 +1,81 @@
+﻿{
+  "value": [
+    {
+      "id": "/apis/httpbin",
+      "name": "Car Configurator API ",
+      "apiRevision": "3",
+      "description": "",
+      "serviceUrl": null,
+      "path": "",
+      "protocols": [
+        "https"
+      ],
+      "authenticationSettings": null,
+      "subscriptionKeyParameterNames": null,
+      "isCurrent": true,
+      "apiRevisionDescription": "test3"
+    },
+    {
+      "id": "/apis/echo-api",
+      "name": "Echo API",
+      "apiRevision": "1",
+      "description": null,
+      "serviceUrl": "http://echoapi.cloudapp.net/api",
+      "path": "echo",
+      "protocols": [
+        "https"
+      ],
+      "authenticationSettings": null,
+      "subscriptionKeyParameterNames": null,
+      "isCurrent": true
+    },
+    {
+      "id": "/apis/gfelenderservice",
+      "name": "GFELenderService",
+      "apiRevision": "1",
+      "description": null,
+      "serviceUrl": "http://10.144.130.19/frc_int_service_basic/GFELenderService.svc",
+      "path": "gfe",
+      "protocols": [
+        "https"
+      ],
+      "authenticationSettings": null,
+      "subscriptionKeyParameterNames": null,
+      "type": "soap",
+      "isCurrent": true
+    },
+    {
+      "id": "/apis/hellocustomer1",
+      "name": "Hello Customer external and internal API",
+      "apiRevision": "4",
+      "description": null,
+      "serviceUrl": "https://api-development.hellocustomer.com",
+      "path": "hellocustomer1",
+      "protocols": [
+        "http",
+        "https"
+      ],
+      "authenticationSettings": null,
+      "subscriptionKeyParameterNames": null,
+      "isCurrent": true,
+      "apiRevisionDescription": "my test version"
+    },
+    {
+      "id": "/apis/hellocustomer",
+      "name": "hellocustomer",
+      "apiRevision": "1",
+      "description": null,
+      "serviceUrl": "https://api-development.hellocustomer.com",
+      "path": "hellocustomer",
+      "protocols": [
+        "http",
+        "https"
+      ],
+      "authenticationSettings": null,
+      "subscriptionKeyParameterNames": null,
+      "isCurrent": true
+    }
+  ],
+  "count": 5,
+  "nextLink": null
+}
