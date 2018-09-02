@@ -9,3 +9,18 @@ In azure portal, when you try to upload new changes to existing apis with large 
 targeting .net framework 4.6.1
 ```
 
+### First Look - APIM Importer
+
+```
+Below is a screenshot of apim importer. As an authentication, It requires api management service name and primary key of management api (Just need to enable Management API from here) and click GO.  
+```
+
+![Screenshot](https://github.com/manishkiet86/Azure-API-mananagement-Importer/blob/master/images/Apimimporter.png)
+
+
+### Supported Specification Files
+```
+It currently supports WSDL, WADL and OpenApi swagger specification files. 
+```
+
+![Screenshot](https://github.com/manishkiet86/Azure-API-mananagement-Importer/blob/master/images/specificationtypes.png)
