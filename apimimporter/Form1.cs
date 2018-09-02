@@ -28,7 +28,19 @@ namespace apimimporter
 
         private void btngetapis_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtapimname.Text))
+            {
+                MessageBox.Show("APIM name should not be empty", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else if (string.IsNullOrEmpty(txtaccesstoken.Text))
+            {
+                MessageBox.Show("SAS primary key should not be empty", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
 
+
+            Auth.createToken(txtaccesstoken.Text);
             var jsonresp = getRequest("apis");
 
             if (!string.IsNullOrEmpty(jsonresp))
@@ -44,9 +56,19 @@ namespace apimimporter
 
                 comboapislist.DisplayMember = "name";
                 comboapislist.ValueMember = "id";
+                txtfilebrowse.Text = "";
+                comboapis2.DataSource = null;
+
                 grpApis.Enabled = true;
+                grpApis.Text = string.Format("Existing apis - {0}", txtapimname.Text);
+
+                grpLogin.Enabled = false;
+                btnreset.Enabled = true;
+
+
             }
         }
+
 
 
         public string getRequest(string methodpath)
@@ -56,7 +78,7 @@ namespace apimimporter
                 Client.BaseAddress = new Uri(string.Format(@"https://{0}.management.azure-api.net", txtapimname.Text));
                 Client.DefaultRequestHeaders.Accept.Clear();
                 Client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-                Client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("SharedAccessSignature", txtaccesstoken.Text);
+                Client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("SharedAccessSignature", Auth.SaSTokengenerated);
                 HttpResponseMessage resp = null;
                 try
                 {
@@ -64,8 +86,7 @@ namespace apimimporter
                 }
                 catch (Exception ex)
                 {
-
-                    MessageBox.Show(ex.InnerException.InnerException.Message.ToString());
+                    MessageBox.Show(ex.InnerException.InnerException.Message.ToString(), "Error Occurred", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return null;
                 }
                 if (resp.IsSuccessStatusCode)
@@ -82,7 +103,8 @@ namespace apimimporter
                 {
                     // deal with error or here ...
                     var Json = resp.StatusCode;
-                    MessageBox.Show(Json.ToString());
+                    MessageBox.Show(Json.ToString(), "Authentication Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show(Json.ToString());
                     return null;
                 }
             }
@@ -110,7 +132,7 @@ namespace apimimporter
                 Client.BaseAddress = new Uri(string.Format(@"https://{0}.management.azure-api.net", txtapimname.Text));
                 Client.DefaultRequestHeaders.Accept.Clear();
                 //Client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-                Client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("SharedAccessSignature", txtaccesstoken.Text);
+                Client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("SharedAccessSignature", Auth.SaSTokengenerated);
                 Client.DefaultRequestHeaders.TryAddWithoutValidation("If-Match", "*");
                 Client.Timeout = TimeSpan.FromMinutes(30);
                 var httpContent = new StringContent(data, Encoding.UTF8, "application/json");
@@ -172,6 +194,13 @@ namespace apimimporter
 
         private void btngetapisrev_Click(object sender, EventArgs e)
         {
+            if (stopWatch.IsRunning)
+            {
+                MessageBox.Show("Last Import operation is running. Please wait..", "Operation Running", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+
             var jsonresp = getRequest(comboapislist.SelectedValue.ToString() + "/revisions");
             var respItems = JsonConvert.DeserializeObject<singleApiRevsion>(jsonresp);
             comboapis2.DataSource = (respItems.value.Select(n => new
@@ -183,7 +212,7 @@ namespace apimimporter
             comboapis2.DisplayMember = "apiId";
             comboapis2.ValueMember = "apiId";
 
-
+            btngetapis.Enabled = false;
         }
 
         public string contentFormat { get; set; }
@@ -240,20 +269,23 @@ namespace apimimporter
                     importdescription = "standard xml representation of your restful apis";
                     break;
 
-                    
+
                 default:
                     importdescription = "Not supported!";
                     break;
             }
         }
 
-
         Stopwatch stopWatch = new Stopwatch();
         Boolean complete = false;
         private void btnfinalimport_Click(object sender, EventArgs e)
         {
-
-            if (comboapis2.Items.Count == 0)
+            if (stopWatch.IsRunning)
+            {
+                MessageBox.Show("Last Import operation is running. Please wait..", "Operation Running", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else if (comboapis2.Items.Count == 0)
             {
                 MessageBox.Show("click fetch details for api revisions.");
                 btngetapisrev.Focus();
@@ -300,6 +332,8 @@ namespace apimimporter
 
 
             }
+
+
         }
 
 
@@ -327,6 +361,26 @@ namespace apimimporter
         private void comboapislist_SelectedIndexChanged(object sender, EventArgs e)
         {
             comboapis2.DataSource = null;
+        }
+
+        private void btnreset_Click(object sender, EventArgs e)
+        {
+            if (stopWatch.IsRunning)
+            {
+                MessageBox.Show("Last Import operation is running. Please wait..", "Operation Running", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            btngetapis.Enabled = true;
+            comboapislist.DataSource = null;
+            lblimporttype.Text = "";
+            txtfilebrowse.Text = "";
+            comboapis2.DataSource = null;
+            toolStripProgressBar1.ProgressBar.Value = 0;
+            toolStripProgressBar1.Visible = false;
+            toolStripStatusLabel1.Text = "Idle...";
+            toolStripStatusLabel1.Visible = false;
+            grpLogin.Enabled = true;
+            grpApis.Enabled = false;
         }
     }
 }

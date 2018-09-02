@@ -76,6 +76,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="lib\Auth.cs" />
     <Compile Include="lib\cloudmessage.cs" />
     <Compile Include="lib\Import.cs" />
     <Compile Include="lib\Rootobject.cs" />
