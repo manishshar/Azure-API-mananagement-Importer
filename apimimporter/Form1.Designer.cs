@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.btngetapis = new System.Windows.Forms.Button();
             this.txtapimname = new System.Windows.Forms.TextBox();
             this.txtaccesstoken = new System.Windows.Forms.TextBox();
@@ -42,6 +43,7 @@
             this.btnfinalimport = new System.Windows.Forms.Button();
             this.lblprogressstatus = new System.Windows.Forms.Label();
             this.grpLogin = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.grpApis = new System.Windows.Forms.GroupBox();
             this.lblimporttype = new System.Windows.Forms.Label();
             this.txtfilebrowse = new System.Windows.Forms.TextBox();
@@ -50,7 +52,6 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.label6 = new System.Windows.Forms.Label();
             this.btnreset = new System.Windows.Forms.Button();
             this.grpLogin.SuspendLayout();
             this.grpApis.SuspendLayout();
@@ -191,6 +192,15 @@
             this.grpLogin.TabStop = false;
             this.grpLogin.Text = "Login APIM service with SAS token";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(255, 26);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(103, 13);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "(e.g. myapimservice)";
+            // 
             // grpApis
             // 
             this.grpApis.Controls.Add(this.lblimporttype);
@@ -274,15 +284,6 @@
             this.toolStripStatusLabel1.Text = "Idle...";
             this.toolStripStatusLabel1.Visible = false;
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(255, 26);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(103, 13);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "(e.g. myapimservice)";
-            // 
             // btnreset
             // 
             this.btnreset.Location = new System.Drawing.Point(573, 18);
@@ -304,9 +305,9 @@
             this.Controls.Add(this.btngetapis);
             this.Controls.Add(this.grpLogin);
             this.Controls.Add(this.lblprogressstatus);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form1";
-            this.ShowIcon = false;
             this.Text = "APIM Importer (beta)";
             this.grpLogin.ResumeLayout(false);
             this.grpLogin.PerformLayout();

@@ -1,7 +1,6 @@
 ﻿using apimimporter.lib;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
+using System.Web.Script;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +15,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Web.Script.Serialization;
 
 namespace apimimporter
 {
@@ -25,7 +25,6 @@ namespace apimimporter
         {
             InitializeComponent();
         }
-
         private void btngetapis_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtapimname.Text))
@@ -45,8 +44,10 @@ namespace apimimporter
 
             if (!string.IsNullOrEmpty(jsonresp))
             {
+                var serializer = new JavaScriptSerializer();
 
-                var respItems = JsonConvert.DeserializeObject<Rootobject>(jsonresp);
+                //var respItems = JsonConvert.DeserializeObject<Rootobject>(jsonresp);
+                var respItems = serializer.Deserialize<Rootobject>(jsonresp);
 
                 comboapislist.DataSource = (respItems.value.Select(n => new
                 {
@@ -159,7 +160,11 @@ namespace apimimporter
                     Console.WriteLine("4");
                     var Json = response.Content.ReadAsStringAsync().Result;
                     //JObject Items = JObject.Parse(Json);
-                    Items = JsonConvert.DeserializeObject<cloudmessage>(Json);
+                    var serializer = new JavaScriptSerializer();
+                    Items = serializer.Deserialize<cloudmessage>(Json);
+
+
+                    //Items = JsonConvert.DeserializeObject<cloudmessage>(Json);
                     toolStripStatusLabel1.Text = "Failed";
 
 
@@ -202,7 +207,11 @@ namespace apimimporter
 
 
             var jsonresp = getRequest(comboapislist.SelectedValue.ToString() + "/revisions");
-            var respItems = JsonConvert.DeserializeObject<singleApiRevsion>(jsonresp);
+
+            var serializer = new JavaScriptSerializer();
+            var respItems = serializer.Deserialize<singleApiRevsion>(jsonresp);
+
+            //var respItems = JsonConvert.DeserializeObject<singleApiRevsion>(jsonresp);
             comboapis2.DataSource = (respItems.value.Select(n => new
             {
                 n.apiId,
@@ -325,7 +334,10 @@ namespace apimimporter
                 import.contentValue = s;
                 import.apiType = this.apiType;
 
-                var myJSON = JsonConvert.SerializeObject(import);
+                var serializer = new JavaScriptSerializer();
+                var myJSON = serializer.Serialize(import);
+
+                //var myJSON = JsonConvert.SerializeObject(import);
 
                 PostrequestAsync(comboapis2.SelectedValue.ToString(), myJSON);
 

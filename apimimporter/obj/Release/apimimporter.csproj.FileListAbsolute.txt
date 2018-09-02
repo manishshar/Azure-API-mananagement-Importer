@@ -1,0 +1,8 @@
+C:\Users\shman\source\repos\apimimporter\apimimporter\bin\Release\apimimporter.exe.config
+C:\Users\shman\source\repos\apimimporter\apimimporter\bin\Release\apimimporter.exe
+C:\Users\shman\source\repos\apimimporter\apimimporter\bin\Release\apimimporter.pdb
+C:\Users\shman\source\repos\apimimporter\apimimporter\obj\Release\apimimporter.Form1.resources
+C:\Users\shman\source\repos\apimimporter\apimimporter\obj\Release\apimimporter.csproj.GenerateResource.Cache
+C:\Users\shman\source\repos\apimimporter\apimimporter\obj\Release\apimimporter.csproj.CoreCompileInputs.cache
+C:\Users\shman\source\repos\apimimporter\apimimporter\obj\Release\apimimporter.exe
+C:\Users\shman\source\repos\apimimporter\apimimporter\obj\Release\apimimporter.pdb
